@@ -1,27 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Checkbox, Button } from '@thumbtack/thumbprint-react';
 import { useHistory } from 'react-router-dom';
 import { questionBeef, scoreBeef, questionVegetarian, scoreVegetarian, questionVegan, scoreVegan } from '../../ultis/Filtered';
+import { QuestionsContext } from '../../context/QuestionContext';
 
 const PastaForm: React.FC = () => {
   const [isBeef, setIsBeef] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
   const [vegetarian, setIsVegetarian] = useState<boolean>(false);
   const [isVegan, setIsVegan] = useState<boolean>(false);
+
+  const contextValue = useContext(QuestionsContext);
 
   let history = useHistory();
   function handleClick() {
     if (isBeef === false && vegetarian === false && isVegan === false) {
       alert('Escolha uma opçāo!')
     } else {
-      setScore(score);
       history.push("/size");
     }
   };
 
   useEffect(() => {
-    setScore(score);
-  }, [score]);
+    contextValue?.setScore(contextValue.score);
+  }, [contextValue?.score]);
 
   if (vegetarian && isVegan) {
     setIsBeef(isBeef);
@@ -42,25 +43,28 @@ const PastaForm: React.FC = () => {
   /* OnChangeBeef */
   const onChangeBeef = () => {
     setIsBeef(!isBeef);
-    setScore(scoreBeef)
+    contextValue?.setTotal(questionBeef);
+    contextValue?.setScore(scoreBeef)
   };
 
   /* onChangeVegetarian */
   const onChangeVegetarian = () => {
     setIsVegetarian(!vegetarian);
-    setScore(scoreVegetarian)
+    contextValue?.setTotal(questionVegetarian);
+    contextValue?.setScore(scoreVegetarian)
   };
 
   /* OnChangeBeef */
   const onChangeIsVegan = () => {
     setIsVegan(!isVegan);
-    setScore(scoreVegan)
+    contextValue?.setTotal(questionVegan);
+    contextValue?.setScore(scoreVegan)
   };
 
   return (
     <>
       <div className={'checkbox-view'}>
-        <h3>Aqui estao algumas informacoes sobre seu pedido.</h3>
+        <h3>Aqui estāo algumas informações sobre seu pedido.</h3>
 
         <strong>Escolha a massa!</strong>
       </div>

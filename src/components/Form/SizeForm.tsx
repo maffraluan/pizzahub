@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Checkbox, Button } from '@thumbtack/thumbprint-react';
 import { useHistory } from 'react-router-dom';
 import { question4pieces, score4Pieces, question8pieces, score8Pieces, question12pieces, score12Pieces } from '../../ultis/Filtered';
+import { QuestionsContext } from '../../context/QuestionContext';
 
 const SizeForm: React.FC = () => {
   const [small, setSmall] = useState(false);
   const [medium, setMedium] = useState(false);
   const [large, setLarge] = useState(false);
-  const [score, setScore] = useState<number>(0);
+
+  const contextValue = useContext(QuestionsContext);
 
   let history = useHistory();
   function handleClick() {
@@ -23,8 +25,8 @@ const SizeForm: React.FC = () => {
   };
 
   useEffect(() => {
-    setScore(score);
-  }, [score]);
+    contextValue?.setScore(contextValue.score);
+  }, [contextValue?.score]);
 
 
   if (small && medium) {
@@ -46,25 +48,28 @@ const SizeForm: React.FC = () => {
   /*  * onChange4Pieces */
   const onChange4Pieces = () => {
     setSmall(!small);
-    setScore(score4Pieces)
+    contextValue?.setTotal(contextValue.total + question4pieces);
+    contextValue?.setScore(contextValue.score + score4Pieces)
   };
 
   /* onChange8Pieces */
   const onChange8Pieces = () => {
     setMedium(!medium);
-    setScore(score8Pieces)
+    contextValue?.setTotal(contextValue.total + question8pieces);
+    contextValue?.setScore(contextValue.score +score8Pieces)
   };
 
   /* onChange12Pieces */
   const onChange12Pieces = () => {
     setLarge(!large);
-    setScore(score12Pieces)
+    contextValue?.setTotal(contextValue.total + question12pieces);
+    contextValue?.setScore(contextValue.score +score12Pieces)
   };
 
   return (
     <>
       <div className={'checkbox-view'}>
-        <h3>Aqui estao algumas informacoes sobre seu pedido.</h3>
+        <h3>Aqui estāo algumas informações sobre seu pedido.</h3>
 
         <strong>Escolha o tamanho!</strong>
       </div>

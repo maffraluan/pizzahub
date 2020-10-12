@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Checkbox, Button } from '@thumbtack/thumbprint-react';
 import { useHistory } from 'react-router-dom';
 import { questionBeef, scoreBeef, questionVegetarian, scoreVegetarian, questionVegan, scoreVegan } from '../../ultis/Filtered';
+import { QuestionsContext } from '../../context/QuestionContext';
 
 const FillingForm: React.FC = () => {
   const [isBeef, setIsBeef] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
   const [vegetarian, setIsVegetarian] = useState<boolean>(false);
   const [isVegan, setIsVegan] = useState<boolean>(false);
+
+  const contextValue = useContext(QuestionsContext);
 
   let history = useHistory();
   function handleClick() {
     if (isBeef === false && vegetarian === false && isVegan === false) {
       alert('Escolha uma opçāo!')
     } else {
-      setScore(10);
+      contextValue?.setScore(contextValue.score);
       history.push("/finalize");
     }
   };
@@ -23,8 +25,8 @@ const FillingForm: React.FC = () => {
   };
 
   useEffect(() => {
-    setScore(score);
-  }, [score]);
+    contextValue?.setScore(contextValue.score);
+  }, [contextValue?.score]);
 
   if (vegetarian && isVegan) {
     setIsBeef(isBeef);
@@ -45,26 +47,26 @@ const FillingForm: React.FC = () => {
  /*  * OnChangeBeef */
   const onChangeBeef = () => {
     setIsBeef(!isBeef);
-    setScore(scoreBeef)
+    contextValue?.setScore(contextValue.score + scoreBeef)
   };
 
   /* onChangeVegetarian */
   const onChangeVegetarian = () => {
     setIsVegetarian(!vegetarian);
-    setScore(scoreVegetarian)
+    contextValue?.setScore(contextValue.score + scoreVegetarian)
   };
 
   /* OnChangeBeef */
   const onChangeIsVegan = () => {
     setIsVegan(!isVegan);
-    setScore(scoreVegan)
+    contextValue?.setScore(contextValue.score + scoreVegan)
   };
 
 
   return (
     <>
       <div className={'checkbox-view'}>
-        <h3>Aqui estao algumas informacoes sobre seu pedido.</h3>
+        <h3>Aqui estāo algumas informações sobre seu pedido.</h3>
 
         <strong>Escolha o Recheio!</strong>
       </div>

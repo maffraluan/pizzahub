@@ -20,17 +20,17 @@ const NotificationPop: React.FC = () => {
     <>
       <TopStateView top={top}>
         <CenterContent>
-          <span className={'span-text'}>Promocao do dia e receba 125 pontos!
-          Vamos aproveitar esse pedido magnifico?</span>
+          <span className={'span-text'}>Promoçāo do dia e receba 125 pontos!
+          Vamos aproveitar esse pedido magnífico?</span>
         </CenterContent>
 
         <CenterContent>
-          <span className={'span-text'}>Pizza grande 12 pedacos deliciosos, metade vegano e metade vegetariano: </span>
+          <span className={'span-text'}>Pizza grande 12 pedaços deliciosos, metade vegano e metade vegetariano: </span>
         </CenterContent>
 
         <CenterContent>
           <strong className={'strong-text'}>
-            Sao 125 pontos
+            Sāo 125 pontos
           </strong>
         </CenterContent>
 
