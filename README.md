@@ -1,7 +1,13 @@
 ![pizzaGif](https://user-images.githubusercontent.com/43678582/95703920-dd3cba80-0c25-11eb-92a6-fab364b0367f.gif)
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Libs and Techs used:
+ReactJs with Typescript
+Styled-components
+UseContext API
+React Router Dom
+Semantic Ui 
+Mocks data.
 
 ## Available Scripts
 
