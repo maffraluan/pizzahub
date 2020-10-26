@@ -1,35 +1,38 @@
 ![pizzaGif](https://user-images.githubusercontent.com/43678582/95703920-dd3cba80-0c25-11eb-92a6-fab364b0367f.gif)
 
+# Pizzahub
 
-## Libs and Techs used:
-ReactJs with Typescript
-Styled-components
-UseContext API
-React Router Dom
-Semantic Ui 
-Mocks data.
+> Choose the type of pizza you want! 3 steps and you'll hit the score!
 
-## Available Scripts
+You can see the project design here: ![figma](https://www.figma.com/file/5mE4PCdoTmlgZOi2QvObiJ/Untitled?node-id=0%3A1)
 
-In the project directory, you can run:
+### Techs!
 
-### `yarn start or npm install to download dependencies`
+  - ReactJs
+  - Typescript
+  - React Navigation
+  - Mocks data
+  - Styled-Components
+  - ContextApi
+  - React Router Dom
+  - Semantic UI
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Installation
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Install the dependencies and start the server.
+
+```sh
+$ git clone 
+$ yarn install && yarn start
+```
+
+License
+----
+
+MIT
 
 
-### `yarn build`
+**Free Software, Hell Yeah!**
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
